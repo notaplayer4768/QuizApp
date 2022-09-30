@@ -22,6 +22,6 @@ class MainActivity : AppCompatActivity() {
         val gson = Gson()
         val type = object : TypeToken<List<Question>>() { }.type
         val questions = gson.fromJson<List<Question>>(jsonString, type)
-//changed
+//change
     }
 }
