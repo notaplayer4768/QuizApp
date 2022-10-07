@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         val TAG = "MainActivity"
     }
-    private lateinit var quiz : Quiz
+    private lateinit var debuggingQuiz : Quiz
     private lateinit var questions : List<Question>
     private lateinit var questionText : TextView
     private lateinit var scoreText : TextView
@@ -22,19 +22,44 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button4 : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
         loadQuestions()
-        quiz = Quiz(questions)
+        debuggingQuiz = Quiz(questions)
         wireWidgets()
-        setInitialWidgets()
+        setWidgets()
+        scoreText.text = "Score: 0"
+        button1.setOnClickListener {
+            checkAnswer(button1.text)
+        }
+        button2.setOnClickListener {
+            checkAnswer(button2.text)
+        }
+        button3.setOnClickListener {
+            checkAnswer(button3.text)
+        }
+        button4.setOnClickListener {
+            checkAnswer(button4.text)
+        }
     }
 
-    private fun setInitialWidgets() {
-        //something here is a little broken
-        //uestionText.setText((String)quiz.initializeQuestionText())
-
+    private fun checkAnswer(text: CharSequence) {
+        var temp = debuggingQuiz.isCorrect(text)
+        setWidgets()
     }
+
+
+    private fun setWidgets() {
+        questionText.text = debuggingQuiz.initializeQuestionText()
+        val myList = debuggingQuiz.initializeOptions()
+        button1.text = myList.get(0)
+        button2.text = myList.get(1)
+        button3.text = myList.get(2)
+        button4.text = myList.get(3)
+        scoreText.text = debuggingQuiz.score.toString()
+        //^^ fix this line of code
+        debuggingQuiz.addToCurrentQuestionNum()
+    }
+
 
     private fun wireWidgets() {
         questionText = findViewById(R.id.main_questionText)
