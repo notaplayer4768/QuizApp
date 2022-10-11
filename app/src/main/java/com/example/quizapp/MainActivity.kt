@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         debuggingQuiz = Quiz(questions)
         wireWidgets()
         setWidgets()
-        scoreText.text = "Score: 0"
+        //scoreText.text = "Score: 0"
         button1.setOnClickListener {
             checkAnswer(button1.text)
         }
@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
         button2.text = myList.get(1)
         button3.text = myList.get(2)
         button4.text = myList.get(3)
-        scoreText.text = debuggingQuiz.score.toString()
-        //^^ fix this line of code
+        //scoreText.text = debuggingQuiz.score.toString()
+        scoreText.text = getString(R.string.main_score)
         debuggingQuiz.addToCurrentQuestionNum()
     }
 

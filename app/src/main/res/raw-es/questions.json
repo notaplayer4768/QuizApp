@@ -1,0 +1,50 @@
+[
+{
+  "currentQuestion" : "¿Cuál es el número de cuarto?",
+  "currentAnswer" : "417",
+  "option1" : "514",
+  "option2" : "427",
+  "option3" : "415",
+  "option4" : "417"
+},
+{
+  "currentQuestion" : "¿Cuál es el nombre de pila del profesor?",
+  "currentAnswer" : "Garrett",
+  "option1" : "Jared",
+  "option2" : "Garrett",
+  "option3" : "Andrew",
+  "option4" : "Chris"
+},
+{
+  "currentQuestion" : "¿Cómo se llama a esta clase?",
+  "currentAnswer" : "Android development",
+  "option1" : "Android app development",
+  "option2" : "Android development",
+  "option3" : "App Development",
+  "option4" : "Android studio development"
+},
+  {
+  "currentQuestion" : "¿Cómo fue el primer día de clases?",
+    "currentAnswer" : "Thurs, agosto 11",
+    "option1" : "Miercoles, agosto 11",
+    "option2" : "Jueves, agosto 11",
+    "option3" : "Miercoles, agosto 12",
+    "option4" : "Jueves, agosto 12"
+  },
+  {
+    "currentQuestion" : "¿Cuántos estudiantes hay en la segunda clase?",
+    "currentAnswer" : "31",
+    "option1" : "28",
+    "option2" : "30",
+    "option3" : "31",
+    "option4" : "32"
+  },
+  {
+    "currentQuestion" : "¿Qué es la regla de clase?",
+    "currentAnswer" : "Respétate a ti mismo y a los demás",
+    "option1" : "Respétate a ti mismo y a los demás",
+    "option2" : "intenta hacer lo mejor que puedas",
+    "option3" : "no te rindas",
+    "option4" : "Hay más de una regla de clase"
+  }
+]
