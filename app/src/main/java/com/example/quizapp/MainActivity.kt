@@ -93,4 +93,5 @@ class MainActivity : AppCompatActivity() {
         questions = gson.fromJson<List<Question>>(jsonString, type)
         Log.d(TAG, "onCreate: $questions")
     }
+    //change
 }
