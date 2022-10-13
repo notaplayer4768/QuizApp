@@ -21,17 +21,25 @@ import android.util.Log
     }
     public fun isCorrect(text:CharSequence): Boolean
     {
-        Log.d(TAG, "isCorrect outside code block: $score")
-        if(text == questions[currentQuestionNum].currentAnswer)
+        Log.d(TAG, "isCorrect outside text: " +text+ " answer:" +  questions[currentQuestionNum].currentAnswer)
+        if(text.equals(questions[currentQuestionNum].currentAnswer))
         {
             //this code block may not be being called
             score++
-            Log.d(TAG, "isCorrect inside code block: $score")
+            Log.d(TAG, "isCorrect inside code block / score : $score currentQuestion: $currentQuestionNum")
+        }
+        if(text != questions[currentQuestionNum].currentAnswer)
+        {
+            Log.d(TAG,"isCorrect 'is not correct' code block/ score : $score currentQuestion: $currentQuestionNum" )
         }
         return text == questions[currentQuestionNum].currentAnswer
     }
     public fun addToCurrentQuestionNum(){
         currentQuestionNum++
+    }
+
+    fun isThereNextQuestion():Boolean {
+        return currentQuestionNum < questions.size
     }
     //variables to track score, current question
     //function to check if there's another question

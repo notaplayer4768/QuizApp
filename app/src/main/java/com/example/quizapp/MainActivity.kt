@@ -1,10 +1,12 @@
 package com.example.quizapp
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         loadQuestions()
         debuggingQuiz = Quiz(questions)
         wireWidgets()
-        setWidgets()
+        setWidgets(true)
         //scoreText.text = "Score: 0"
         button1.setOnClickListener {
             checkAnswer(button1.text)
@@ -43,21 +45,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkAnswer(text: CharSequence) {
-        var temp = debuggingQuiz.isCorrect(text)
-        setWidgets()
+        debuggingQuiz.isCorrect(text)
+        setWidgets(false)
     }
 
+// this line of code below makes it so kotlin doesnt
+// yell at me for concatenating stuff the java way
+    @SuppressLint("SetTextI18n")
+    private fun setWidgets(firstTime : Boolean) {
+        if(!firstTime) {
+            debuggingQuiz.addToCurrentQuestionNum()
+            Log.d(TAG, "added to currentQuestionNum")
+        }
+        if (debuggingQuiz.isThereNextQuestion()) {
+            questionText.text = debuggingQuiz.initializeQuestionText()
+            val myList = debuggingQuiz.initializeOptions()
+            button1.text = myList.get(0)
+            button2.text = myList.get(1)
+            button3.text = myList.get(2)
+            button4.text = myList.get(3)
+            scoreText.text = getString(R.string.main_score) + debuggingQuiz.score.toString()
+        }
+        else
+        {
+            button1.isVisible = false
+            button2.isVisible = false
+            button3.isVisible = false
+            button4.isVisible = false
+            questionText.isVisible = false
+            scoreText.textSize = 50F
+            scoreText.text = getString(R.string.final_score) + debuggingQuiz.score.toString() + "/" + debuggingQuiz.questions.size + "!"
+        }
 
-    private fun setWidgets() {
-        questionText.text = debuggingQuiz.initializeQuestionText()
-        val myList = debuggingQuiz.initializeOptions()
-        button1.text = myList.get(0)
-        button2.text = myList.get(1)
-        button3.text = myList.get(2)
-        button4.text = myList.get(3)
-        //scoreText.text = debuggingQuiz.score.toString()
-        scoreText.text = getString(R.string.main_score)
-        debuggingQuiz.addToCurrentQuestionNum()
+
     }
 
 
